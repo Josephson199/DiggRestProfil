@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<RootNamespace>CORP.DiggRestProfil</RootNamespace>
+	<AssemblyName>CORP.DiggRestProfil</AssemblyName>
+    <UserSecretsId>9a2f7329-cd6d-49e7-8796-94a8a690f1e7</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DiggRestProfil.Infrastructure\DiggRestProfil.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

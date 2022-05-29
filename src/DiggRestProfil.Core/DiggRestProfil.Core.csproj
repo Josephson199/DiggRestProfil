@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyName>CORP.DiggRestProfil.Core</AssemblyName>
+	  <AssemblyName>CORP.DiggRestProfil.Core</AssemblyName>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DiggRestProfil.SharedKernal\DiggRestProfil.SharedKernal.csproj" />
+  </ItemGroup>
+
+</Project>

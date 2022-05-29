@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyName>CORP.DiggRestProfil.Infrastructure</AssemblyName>
+	  <AssemblyName>CORP.DiggRestProfil.Infrastructure</AssemblyName>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="1.8.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Npgsql" Version="6.0.4" />
+    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Confluent.Kafka" Version="1.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DiggRestProfil.Core\DiggRestProfil.Core.csproj" />
+    <ProjectReference Include="..\DiggRestProfil.SharedKernal\DiggRestProfil.SharedKernal.csproj" />
+  </ItemGroup>
+
+</Project>
