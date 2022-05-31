@@ -1,4 +1,7 @@
+using Dapper;
+using DiggRestProfil.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Npgsql;
 
 namespace CORP.DiggRestProfil.Controllers
 {
@@ -12,6 +15,12 @@ namespace CORP.DiggRestProfil.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
+        private readonly IUnitOfWork _unitOfWork;
+
+        public WeatherForecastController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+        }
 
         [ResponseCache(Duration = 60)]
         [HttpGet(Name = "GetWeatherForecast")]
@@ -29,15 +38,33 @@ namespace CORP.DiggRestProfil.Controllers
         }
 
         [HttpPost(Name = "PostWeatherForecast")]
-        public WeatherForecast Post()
+        public async Task<Guid> Post()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            try
             {
-                Date = DateTime.UtcNow,
-                TemperatureC = 12,
-                Summary = "Summary"
-            })
-            .ToArray().First();
+                var id = Guid.NewGuid();
+
+                await _unitOfWork.Connection.OpenAsync();
+
+                await _unitOfWork.BeginAsync();
+
+                _ = await _unitOfWork.Connection.ExecuteAsync(
+                    @"INSERT INTO lab_reports(id)
+                    VALUES
+                    (@id);", new { id });
+
+                await _unitOfWork.CommitAsync();
+
+                await _unitOfWork.Connection.CloseAsync();
+
+                return id;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
         }
     }
 }

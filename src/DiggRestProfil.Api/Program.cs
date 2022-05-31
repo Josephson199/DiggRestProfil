@@ -6,7 +6,7 @@ using Serilog.Sinks.Kafka;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDapperNpgSql("");
+builder.Services.AddDapperNpgSql("Server=localhost;Port=5432;User Id=postgres;Password=password;Database=postgres;");
 
 var logger = new LoggerConfiguration()
                         .ReadFrom.Configuration(builder.Configuration)
